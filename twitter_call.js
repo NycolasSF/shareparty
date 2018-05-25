@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 
 
 /* Access Information Twitter */
-var consumer_secret = 'Ms5aIq7lZGbUQXtvkaaImRPgdkSdXN9Lp43XRrkLYEJ5hsRmME';
-var consumer_key = '87Kw2R4B5CZzERMOo5LLZZpgL';
+var consumer_secret = '';
+var consumer_key = '';
 
 var consumer_secret_encode = encodeURI(consumer_secret);
 var consumer_key_encode = encodeURI(consumer_key);

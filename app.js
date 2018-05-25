@@ -1,41 +1,15 @@
-var request = require('request');
-var bodyParser = require('body-parser');
+const express = require('express')
+const path = require('path');
+const app = express()
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-/* Access Information Twitter */
-var consumer_secret = 'Ms5aIq7lZGbUQXtvkaaImRPgdkSdXN9Lp43XRrkLYEJ5hsRmME';
-var consumer_key = '87Kw2R4B5CZzERMOo5LLZZpgL';
+app.get('/', function(req, res) {
 
-var consumer_secret_encode = encodeURI(consumer_secret);
-var consumer_key_encode = encodeURI(consumer_key);
+  res.render("index");
+});
 
-var bearer_token = new Buffer(consumer_key_encode+':'+consumer_secret_encode).toString('base64');
-
-
-function read_twitter_search_response(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var info = JSON.parse(body);
-    console.log(info);
-  }
-}
-
-/* Access Request to get Bearer Token */
-var authorization_request_data = {
-  method: 'POST',
-  uri: 'https://api.twitter.com/oauth2/token',
-  headers: {
-    Authorization: 'Basic ' +bearer_token
-  }
-}
-
-request(authorization_request_data, function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var info = JSON.parse(body);
-    request(
-      {uri: 'https://api.twitter.com/1.1/search/tweets.json?q=%23PiaiDebutante',
-        headers: {
-          Authorization: 'Bearer ' +info.access_token
-        }
-      }, read_twitter_search_response);
-  }
-}).form({grant_type:'client_credentials'});
+app.listen(3000, function() {
+  console.log('Aplicativo de exemplo contendo busca dos twitter');
+})
