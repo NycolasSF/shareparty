@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 
 
 /* Access Information Twitter */
-var consumer_secret = '';
-var consumer_key = '';
+var consumer_secret = '6GIj9vTWPg1Jx9pyjArdJ1nu5rYlpY6brTBkjn7JyJlPxAVK9d';
+  var consumer_key = 'ZmjDGiFp4nCG5SjrwT4XffCKx';
 
 var consumer_secret_encode = encodeURI(consumer_secret);
 var consumer_key_encode = encodeURI(consumer_key);
@@ -32,7 +32,7 @@ request(authorization_request_data, function (error, response, body) {
   if (!error && response.statusCode == 200) {
     var info = JSON.parse(body);
     request(
-      {uri: 'https://api.twitter.com/1.1/search/tweets.json?q=%23PiaiDebutante',
+      {uri: 'https://api.twitter.com/1.1/search/tweets.json?q=%23MadMax',
         headers: {
           Authorization: 'Bearer ' +info.access_token
         }
